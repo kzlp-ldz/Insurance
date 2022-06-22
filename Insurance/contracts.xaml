@@ -1,0 +1,113 @@
+﻿<Page x:Class="Insurance.contracts"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Insurance"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="contracts">
+
+    <Page.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ButtonMine" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border"  SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.RowSpan="9" Orientation="Horizontal" Background="#706262"/>
+        <Button x:Name="first_page" Content=" Главная" FontSize="25" FontStyle="Normal" FontWeight="Regular" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Foreground="#F9EAEA" Style="{DynamicResource ButtonMine}" Click="btnFirst" />
+        <Button x:Name="employees" Content=" Агенты"   FontSize="25" FontStyle="Normal" FontWeight="Regular" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#F9EAEA" Style="{DynamicResource ButtonMine}" Click="btnEmployees"/>
+        <Button x:Name="contract" Content=" Договора"   FontSize="25" FontStyle="Normal" FontWeight="Regular" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#F9EAEA" Style="{DynamicResource ButtonMine}" Click="btnContracts"/>
+        <Button x:Name="enterprise" Content=" Организации"   FontSize="25" FontStyle="Normal" FontWeight="Regular" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#F9EAEA" Style="{DynamicResource ButtonMine}" Click="btnEnterp"/>
+        <Button x:Name="out" Content=" Выйти"   FontSize="25" FontStyle="Normal" FontWeight="Regular" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#F9EAEA" Style="{DynamicResource ButtonMine}" Click="btnOut"/>
+        <Button x:Name="add" Content="Добавить" Margin="5"  FontSize="25" FontStyle="Normal" FontWeight="Regular" Grid.Row="0" Grid.Column="1" Foreground="#F9EAEA" Background="#706262" Click="btnAdd_Click"/>
+        
+        <TextBox x:Name="searche" Width="150" TextChanged="tbxSearche" FontSize="25" FontStyle="Normal" FontWeight="Regular" Foreground="#706262" Grid.Column="4" Margin="5" />
+        <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="9">
+            <ListView x:Name="ListContract" Height="1000"  Loaded="ld">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="id" Width="50" DisplayMemberBinding="{Binding id_contract}"/>
+                        <GridViewColumn Header="Дата заключения" Width="150" DisplayMemberBinding="{Binding date_conclusion}"/>
+                        <GridViewColumn Header="Срок договора" Width="100" DisplayMemberBinding="{Binding end_date}"/>
+                        <GridViewColumn Header="Агент" Width="100" DisplayMemberBinding="{Binding Agent.fio}"/>
+                        <GridViewColumn Header="Предприятие" Width="100" DisplayMemberBinding="{Binding Predpriyat.short_name}"/>
+                        <GridViewColumn Header="Сумма выплат" Width="100" DisplayMemberBinding="{Binding sum_pay}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Page>
