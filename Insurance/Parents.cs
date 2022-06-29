@@ -12,26 +12,18 @@ namespace Insurance
     using System;
     using System.Collections.Generic;
     
-    public partial class Predpriyat
+    public partial class Parents
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Predpriyat()
+        public Parents()
         {
-            this.Contract_pred = new HashSet<Contract_pred>();
-            this.Fiz_lico = new HashSet<Fiz_lico>();
+            this.Child = new HashSet<Child>();
         }
     
-        public int id_predpriyat { get; set; }
-        public string full_name { get; set; }
-        public string short_name { get; set; }
-        public string address { get; set; }
-        public string bank { get; set; }
-        public Nullable<int> id_specialization { get; set; }
+        public int id { get; set; }
+        public string info { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contract_pred> Contract_pred { get; set; }
-        public virtual п Enterprise_specialization { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Fiz_lico> Fiz_lico { get; set; }
+        public virtual ICollection<Child> Child { get; set; }
     }
 }

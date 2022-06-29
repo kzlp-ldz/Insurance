@@ -1,0 +1,530 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище DosugModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Certificate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="number" Type="int" />
+          <Property Name="cerDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Child">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fio" Type="nvarchar" MaxLength="100" />
+          <Property Name="idSection" Type="int" />
+          <Property Name="age" Type="int" />
+          <Property Name="schoolNumber" Type="int" />
+          <Property Name="grade" Type="int" />
+          <Property Name="idCertificate" Type="int" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" />
+          <Property Name="phone" Type="nvarchar" MaxLength="11" />
+          <Property Name="idParents" Type="int" />
+        </EntityType>
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="idSection" Type="int" />
+          <Property Name="childAge" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="number" Type="int" />
+        </EntityType>
+        <EntityType Name="Parents">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="info" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Section">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fio" Type="nvarchar" MaxLength="100" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="gender" Type="bit" />
+          <Property Name="idEducation" Type="int" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" />
+          <Property Name="phone" Type="nvarchar" MaxLength="11" />
+          <Property Name="specialization" Type="nvarchar" MaxLength="50" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Teacher_Section">
+          <Key>
+            <PropertyRef Name="idTeacher" />
+            <PropertyRef Name="idSection" />
+          </Key>
+          <Property Name="idTeacher" Type="int" Nullable="false" />
+          <Property Name="idSection" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="isAdmin" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Child_Certificate">
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="0..1" />
+          <End Role="Child" Type="Self.Child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Certificate">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Child">
+              <PropertyRef Name="idCertificate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Child_Parents">
+          <End Role="Parents" Type="Self.Parents" Multiplicity="0..1" />
+          <End Role="Child" Type="Self.Child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parents">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Child">
+              <PropertyRef Name="idParents" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Child_Section">
+          <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
+          <End Role="Child" Type="Self.Child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Child">
+              <PropertyRef Name="idSection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_Section">
+          <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="idSection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_Education">
+          <End Role="Education" Type="Self.Education" Multiplicity="0..1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="idEducation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_Section_Section">
+          <End Role="Section" Type="Self.Section" Multiplicity="1" />
+          <End Role="Teacher_Section" Type="Self.Teacher_Section" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Teacher_Section">
+              <PropertyRef Name="idSection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_Section_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="Teacher_Section" Type="Self.Teacher_Section" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Teacher_Section">
+              <PropertyRef Name="idTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище DosugModelContainer">
+          <EntitySet Name="Certificate" EntityType="Self.Certificate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Child" EntityType="Self.Child" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education" EntityType="Self.Education" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parents" EntityType="Self.Parents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher_Section" EntityType="Self.Teacher_Section" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Child_Certificate" Association="Self.FK_Child_Certificate">
+            <End Role="Certificate" EntitySet="Certificate" />
+            <End Role="Child" EntitySet="Child" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Child_Parents" Association="Self.FK_Child_Parents">
+            <End Role="Parents" EntitySet="Parents" />
+            <End Role="Child" EntitySet="Child" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Child_Section" Association="Self.FK_Child_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="Child" EntitySet="Child" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_Section" Association="Self.FK_Group_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_Education" Association="Self.FK_Teacher_Education">
+            <End Role="Education" EntitySet="Education" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_Section_Section" Association="Self.FK_Teacher_Section_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="Teacher_Section" EntitySet="Teacher_Section" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_Section_Teacher" Association="Self.FK_Teacher_Section_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Teacher_Section" EntitySet="Teacher_Section" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DosugModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Certificate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="number" Type="Int32" />
+          <Property Name="cerDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Child" Relationship="Self.FK_Child_Certificate" FromRole="Certificate" ToRole="Child" />
+        </EntityType>
+        <EntityType Name="Child">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="idSection" Type="Int32" />
+          <Property Name="age" Type="Int32" />
+          <Property Name="schoolNumber" Type="Int32" />
+          <Property Name="grade" Type="Int32" />
+          <Property Name="idCertificate" Type="Int32" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="idParents" Type="Int32" />
+          <NavigationProperty Name="Certificate" Relationship="Self.FK_Child_Certificate" FromRole="Child" ToRole="Certificate" />
+          <NavigationProperty Name="Parents" Relationship="Self.FK_Child_Parents" FromRole="Child" ToRole="Parents" />
+          <NavigationProperty Name="Section" Relationship="Self.FK_Child_Section" FromRole="Child" ToRole="Section" />
+        </EntityType>
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Teacher" Relationship="Self.FK_Teacher_Education" FromRole="Education" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="idSection" Type="Int32" />
+          <Property Name="childAge" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="number" Type="Int32" />
+          <NavigationProperty Name="Section" Relationship="Self.FK_Group_Section" FromRole="Group" ToRole="Section" />
+        </EntityType>
+        <EntityType Name="Parents">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="info" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Child" Relationship="Self.FK_Child_Parents" FromRole="Parents" ToRole="Child" />
+        </EntityType>
+        <EntityType Name="Section">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Child" Relationship="Self.FK_Child_Section" FromRole="Section" ToRole="Child" />
+          <NavigationProperty Name="Group" Relationship="Self.FK_Group_Section" FromRole="Section" ToRole="Group" />
+          <NavigationProperty Name="Teacher" Relationship="Self.Teacher_Section" FromRole="Section" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="gender" Type="Boolean" />
+          <Property Name="idEducation" Type="Int32" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="specialization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Education" Relationship="Self.FK_Teacher_Education" FromRole="Teacher" ToRole="Education" />
+          <NavigationProperty Name="Section" Relationship="Self.Teacher_Section" FromRole="Teacher" ToRole="Section" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isAdmin" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_Child_Certificate">
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="0..1" />
+          <End Role="Child" Type="Self.Child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Certificate">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Child">
+              <PropertyRef Name="idCertificate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Child_Parents">
+          <End Role="Parents" Type="Self.Parents" Multiplicity="0..1" />
+          <End Role="Child" Type="Self.Child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parents">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Child">
+              <PropertyRef Name="idParents" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Child_Section">
+          <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
+          <End Role="Child" Type="Self.Child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Child">
+              <PropertyRef Name="idSection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_Education">
+          <End Role="Education" Type="Self.Education" Multiplicity="0..1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="idEducation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_Section">
+          <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="idSection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Teacher_Section">
+          <End Role="Section" Type="Self.Section" Multiplicity="*" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="DosugEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Certificate" EntityType="Self.Certificate" />
+          <EntitySet Name="Child" EntityType="Self.Child" />
+          <EntitySet Name="Education" EntityType="Self.Education" />
+          <EntitySet Name="Group" EntityType="Self.Group" />
+          <EntitySet Name="Parents" EntityType="Self.Parents" />
+          <EntitySet Name="Section" EntityType="Self.Section" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_Child_Certificate" Association="Self.FK_Child_Certificate">
+            <End Role="Certificate" EntitySet="Certificate" />
+            <End Role="Child" EntitySet="Child" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Child_Parents" Association="Self.FK_Child_Parents">
+            <End Role="Parents" EntitySet="Parents" />
+            <End Role="Child" EntitySet="Child" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Child_Section" Association="Self.FK_Child_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="Child" EntitySet="Child" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_Education" Association="Self.FK_Teacher_Education">
+            <End Role="Education" EntitySet="Education" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_Section" Association="Self.FK_Group_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="Teacher_Section" Association="Self.Teacher_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DosugModelContainer" CdmEntityContainer="DosugEntities">
+          <EntitySetMapping Name="Certificate">
+            <EntityTypeMapping TypeName="DosugModel.Certificate">
+              <MappingFragment StoreEntitySet="Certificate">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="cerDate" ColumnName="cerDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Child">
+            <EntityTypeMapping TypeName="DosugModel.Child">
+              <MappingFragment StoreEntitySet="Child">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fio" ColumnName="fio" />
+                <ScalarProperty Name="idSection" ColumnName="idSection" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="schoolNumber" ColumnName="schoolNumber" />
+                <ScalarProperty Name="grade" ColumnName="grade" />
+                <ScalarProperty Name="idCertificate" ColumnName="idCertificate" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="idParents" ColumnName="idParents" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Education">
+            <EntityTypeMapping TypeName="DosugModel.Education">
+              <MappingFragment StoreEntitySet="Education">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Group">
+            <EntityTypeMapping TypeName="DosugModel.Group">
+              <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idSection" ColumnName="idSection" />
+                <ScalarProperty Name="childAge" ColumnName="childAge" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="number" ColumnName="number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parents">
+            <EntityTypeMapping TypeName="DosugModel.Parents">
+              <MappingFragment StoreEntitySet="Parents">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="info" ColumnName="info" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Section">
+            <EntityTypeMapping TypeName="DosugModel.Section">
+              <MappingFragment StoreEntitySet="Section">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teacher">
+            <EntityTypeMapping TypeName="DosugModel.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Fio" ColumnName="Fio" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="idEducation" ColumnName="idEducation" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="specialization" ColumnName="specialization" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DosugModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Teacher_Section" TypeName="DosugModel.Teacher_Section" StoreEntitySet="Teacher_Section">
+            <EndProperty Name="Section">
+              <ScalarProperty Name="id" ColumnName="idSection" />
+            </EndProperty>
+            <EndProperty Name="Teacher">
+              <ScalarProperty Name="id" ColumnName="idTeacher" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

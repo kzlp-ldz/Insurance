@@ -29,7 +29,7 @@ namespace Insurance
 
         private void btnLogIn_click(object sender, RoutedEventArgs e)
         {
-            var z = BD_connection.bd_connection.connection.Agent.Where(a => a.login == login.Text && a.password == password.Text).FirstOrDefault();
+            var z = BD_connection.bd_connection.connection.Users.Where(a => a.login == login.Text && a.password == password.Text).FirstOrDefault();
             if (z != null)
             {
                 if (z.isAdmin == true)
@@ -38,13 +38,17 @@ namespace Insurance
                 }
                 else
                     BD_connection.User.IsAdmin = false;
-                MessageBox.Show(z.fio);
                 NavigationService.Navigate(new main());
             }
             else
             {
-                MessageBox.Show("введи пароль и логин нормально дура", "error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("пароль и логин введены неверно", "error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void btnSign_click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new regist());
         }
     }
 }

@@ -12,23 +12,18 @@ namespace Insurance
     using System;
     using System.Collections.Generic;
     
-    public partial class Fiz_lico
+    public partial class Education
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Fiz_lico()
+        public Education()
         {
-            this.Employee_strah_sluch = new HashSet<Employee_strah_sluch>();
+            this.Teacher = new HashSet<Teacher>();
         }
     
-        public int id_fiz_lica { get; set; }
-        public string fio { get; set; }
-        public Nullable<System.DateTime> birth_date { get; set; }
-        public Nullable<int> id_risk_kategory { get; set; }
-        public Nullable<int> id_predpriyat { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee_strah_sluch> Employee_strah_sluch { get; set; }
-        public virtual Risk_Kategory Risk_Kategory { get; set; }
-        public virtual Predpriyat Predpriyat { get; set; }
+        public virtual ICollection<Teacher> Teacher { get; set; }
     }
 }

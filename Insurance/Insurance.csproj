@@ -64,86 +64,74 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddContract.xaml.cs">
-      <DependentUpon>AddContract.xaml</DependentUpon>
+    <Compile Include="AddChild.xaml.cs">
+      <DependentUpon>AddChild.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddEmployee.xaml.cs">
-      <DependentUpon>AddEmployee.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AddFiz.xaml.cs">
-      <DependentUpon>AddFiz.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AddPred.xaml.cs">
-      <DependentUpon>AddPred.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Agent.cs">
-      <DependentUpon>insuar.tt</DependentUpon>
+    <Compile Include="AddTeacher.xaml.cs">
+      <DependentUpon>AddTeacher.xaml</DependentUpon>
     </Compile>
     <Compile Include="BD_connection\bd_connection.cs" />
     <Compile Include="BD_connection\User.cs" />
-    <Compile Include="contracts.xaml.cs">
-      <DependentUpon>contracts.xaml</DependentUpon>
+    <Compile Include="Certificate.cs">
+      <DependentUpon>DosugModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Contract_pred.cs">
-      <DependentUpon>insuar.tt</DependentUpon>
+    <Compile Include="Child.cs">
+      <DependentUpon>DosugModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Employees.xaml.cs">
-      <DependentUpon>Employees.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Employee_strah_sluch.cs">
-      <DependentUpon>insuar.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Enterprise_specialization.cs">
-      <DependentUpon>insuar.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Fiz_lico.cs">
-      <DependentUpon>insuar.tt</DependentUpon>
-    </Compile>
-    <Compile Include="insuar.cs">
+    <Compile Include="DosugModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>insuar.tt</DependentUpon>
+      <DependentUpon>DosugModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DosugModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DosugModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DosugModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DosugModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Education.cs">
+      <DependentUpon>DosugModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Group.cs">
+      <DependentUpon>DosugModel.tt</DependentUpon>
     </Compile>
     <Compile Include="main.xaml.cs">
       <DependentUpon>main.xaml</DependentUpon>
     </Compile>
-    <Compile Include="organiz.xaml.cs">
-      <DependentUpon>organiz.xaml</DependentUpon>
+    <Compile Include="Parents.cs">
+      <DependentUpon>DosugModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Predpriyat.cs">
-      <DependentUpon>insuar.tt</DependentUpon>
+    <Compile Include="RedaktChild.xaml.cs">
+      <DependentUpon>RedaktChild.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Risk_Kategory.cs">
-      <DependentUpon>insuar.tt</DependentUpon>
+    <Compile Include="RedaktTeacher.xaml.cs">
+      <DependentUpon>RedaktTeacher.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Type_Povred.cs">
-      <DependentUpon>insuar.tt</DependentUpon>
+    <Compile Include="regist.xaml.cs">
+      <DependentUpon>regist.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddContract.xaml">
+    <Compile Include="Section.cs">
+      <DependentUpon>DosugModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher.cs">
+      <DependentUpon>DosugModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>DosugModel.tt</DependentUpon>
+    </Compile>
+    <Page Include="AddChild.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddEmployee.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AddFiz.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AddPred.xaml">
+    <Page Include="AddTeacher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="autho.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="contracts.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Employees.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,21 +150,19 @@
     <Compile Include="autho.xaml.cs">
       <DependentUpon>autho.xaml</DependentUpon>
     </Compile>
-    <Compile Include="insuar.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>insuar.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="insuar.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>insuar.edmx</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="organiz.xaml">
+    <Page Include="RedaktChild.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RedaktTeacher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="regist.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -199,12 +185,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="insuar.edmx">
+    <EntityDeploy Include="DosugModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>insuar.Designer.cs</LastGenOutput>
+      <LastGenOutput>DosugModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="insuar.edmx.diagram">
-      <DependentUpon>insuar.edmx</DependentUpon>
+    <None Include="DosugModel.edmx.diagram">
+      <DependentUpon>DosugModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -216,21 +202,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="insuar.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>insuar.Context.cs</LastGenOutput>
-      <DependentUpon>insuar.edmx</DependentUpon>
-    </Content>
-    <Content Include="insuar.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>insuar.edmx</DependentUpon>
-      <LastGenOutput>insuar.cs</LastGenOutput>
-    </Content>
-    <Resource Include="Resource\sanitar-mem.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DosugModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DosugModel.edmx</DependentUpon>
+      <LastGenOutput>DosugModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DosugModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DosugModel.edmx</DependentUpon>
+      <LastGenOutput>DosugModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

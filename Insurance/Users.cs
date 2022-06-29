@@ -12,19 +12,11 @@ namespace Insurance
     using System;
     using System.Collections.Generic;
     
-    public partial class Type_Povred
+    public partial class Users
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Type_Povred()
-        {
-            this.Employee_strah_sluch = new HashSet<Employee_strah_sluch>();
-        }
-    
-        public int id_type { get; set; }
-        public string name { get; set; }
-        public Nullable<int> pay { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee_strah_sluch> Employee_strah_sluch { get; set; }
+        public int id { get; set; }
+        public string login { get; set; }
+        public string password { get; set; }
+        public Nullable<bool> isAdmin { get; set; }
     }
 }

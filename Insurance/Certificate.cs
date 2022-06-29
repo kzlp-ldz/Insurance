@@ -12,19 +12,19 @@ namespace Insurance
     using System;
     using System.Collections.Generic;
     
-    public partial class Risk_Kategory
+    public partial class Certificate
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Risk_Kategory()
+        public Certificate()
         {
-            this.Fiz_lico = new HashSet<Fiz_lico>();
+            this.Child = new HashSet<Child>();
         }
     
-        public int id_risk_kategory { get; set; }
-        public string name { get; set; }
-        public Nullable<decimal> pay { get; set; }
+        public int id { get; set; }
+        public Nullable<int> number { get; set; }
+        public Nullable<System.DateTime> cerDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Fiz_lico> Fiz_lico { get; set; }
+        public virtual ICollection<Child> Child { get; set; }
     }
 }

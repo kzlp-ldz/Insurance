@@ -12,24 +12,26 @@ namespace Insurance
     using System;
     using System.Collections.Generic;
     
-    public partial class Contract_pred
+    public partial class Teacher
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Contract_pred()
+        public Teacher()
         {
-            this.Employee_strah_sluch = new HashSet<Employee_strah_sluch>();
+            this.Section = new HashSet<Section>();
         }
     
-        public int id_contract { get; set; }
-        public Nullable<System.DateTime> date_conclusion { get; set; }
-        public Nullable<System.DateTime> end_date { get; set; }
-        public Nullable<int> id_agent { get; set; }
-        public Nullable<int> id_predriyat { get; set; }
-        public Nullable<decimal> sum_pay { get; set; }
+        public int id { get; set; }
+        public string Fio { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
+        public Nullable<bool> gender { get; set; }
+        public Nullable<int> idEducation { get; set; }
+        public string address { get; set; }
+        public string phone { get; set; }
+        public string specialization { get; set; }
+        public string status { get; set; }
     
-        public virtual Agent Agent { get; set; }
-        public virtual Predpriyat Predpriyat { get; set; }
+        public virtual Education Education { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee_strah_sluch> Employee_strah_sluch { get; set; }
+        public virtual ICollection<Section> Section { get; set; }
     }
 }

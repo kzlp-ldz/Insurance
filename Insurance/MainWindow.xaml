@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Frame x:Name="frame_autho"/>
+        <Frame x:Name="frame_autho" Margin="100,50,100,50"/>
     </Grid>
 </Window>

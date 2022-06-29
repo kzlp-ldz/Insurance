@@ -12,14 +12,14 @@ namespace Insurance
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee_strah_sluch
+    public partial class Group
     {
-        public int id_fiz_lica { get; set; }
-        public int id_contract { get; set; }
-        public Nullable<int> id_type { get; set; }
+        public int id { get; set; }
+        public Nullable<int> idSection { get; set; }
+        public Nullable<int> childAge { get; set; }
+        public string name { get; set; }
+        public Nullable<int> number { get; set; }
     
-        public virtual Contract_pred Contract_pred { get; set; }
-        public virtual Fiz_lico Fiz_lico { get; set; }
-        public virtual Type_Povred Type_Povred { get; set; }
+        public virtual Section Section { get; set; }
     }
 }

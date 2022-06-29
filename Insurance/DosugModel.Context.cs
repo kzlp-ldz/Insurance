@@ -13,10 +13,10 @@ namespace Insurance
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class InsuranceEntities : DbContext
+    public partial class DosugEntities : DbContext
     {
-        public InsuranceEntities()
-            : base("name=InsuranceEntities")
+        public DosugEntities()
+            : base("name=DosugEntities")
         {
         }
     
@@ -25,13 +25,13 @@ namespace Insurance
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Agent> Agent { get; set; }
-        public virtual DbSet<Contract_pred> Contract_pred { get; set; }
-        public virtual DbSet<Employee_strah_sluch> Employee_strah_sluch { get; set; }
-        public virtual DbSet<п> Enterprise_specialization { get; set; }
-        public virtual DbSet<Fiz_lico> Fiz_lico { get; set; }
-        public virtual DbSet<Predpriyat> Predpriyat { get; set; }
-        public virtual DbSet<Risk_Kategory> Risk_Kategory { get; set; }
-        public virtual DbSet<Type_Povred> Type_Povred { get; set; }
+        public virtual DbSet<Certificate> Certificate { get; set; }
+        public virtual DbSet<Child> Child { get; set; }
+        public virtual DbSet<Education> Education { get; set; }
+        public virtual DbSet<Group> Group { get; set; }
+        public virtual DbSet<Parents> Parents { get; set; }
+        public virtual DbSet<Section> Section { get; set; }
+        public virtual DbSet<Teacher> Teacher { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }

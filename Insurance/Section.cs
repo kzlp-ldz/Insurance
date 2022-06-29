@@ -12,22 +12,24 @@ namespace Insurance
     using System;
     using System.Collections.Generic;
     
-    public partial class Agent
+    public partial class Section
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Agent()
+        public Section()
         {
-            this.Contract_pred = new HashSet<Contract_pred>();
+            this.Child = new HashSet<Child>();
+            this.Group = new HashSet<Group>();
+            this.Teacher = new HashSet<Teacher>();
         }
     
-        public int id_agent { get; set; }
-        public string fio { get; set; }
-        public string pasport { get; set; }
-        public Nullable<bool> isAdmin { get; set; }
-        public string login { get; set; }
-        public string password { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contract_pred> Contract_pred { get; set; }
+        public virtual ICollection<Child> Child { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Group> Group { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Teacher> Teacher { get; set; }
     }
 }

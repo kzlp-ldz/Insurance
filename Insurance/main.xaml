@@ -78,19 +78,33 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.RowSpan="9" Orientation="Horizontal" Background="#706262"/>
-        <Button x:Name="first_page" Content=" Главная" FontSize="25" FontStyle="Normal" FontWeight="Regular" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Foreground="#F9EAEA" Style="{DynamicResource ButtonMine}" Click="btnFirst" />
-        <Button x:Name="employees" Content=" Агенты"   FontSize="25" FontStyle="Normal" FontWeight="Regular" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#F9EAEA" Style="{DynamicResource ButtonMine}" Click="btnEmployees"/>
-        <Button x:Name="contracts" Content=" Договора"   FontSize="25" FontStyle="Normal" FontWeight="Regular" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#F9EAEA" Style="{DynamicResource ButtonMine}" Click="btnContracts"/>
-        <Button x:Name="out" Content=" Выйти"   FontSize="25" FontStyle="Normal" FontWeight="Regular" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#F9EAEA" Style="{DynamicResource ButtonMine}" Click="btnOut"/>
-        <Button x:Name="enterprise" Content=" Организации"   FontSize="25" FontStyle="Normal" FontWeight="Regular" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#F9EAEA" Style="{DynamicResource ButtonMine}" Click="btnEnterp"/>
-        <Image Source="Resource/sanitar-mem.jpg" Grid.Column="1" Grid.Row="2" Grid.RowSpan="6" Grid.ColumnSpan="4"/>
-        <TextBlock Text="Добро пожаловать!!!" Grid.Column="2" Grid.ColumnSpan="2"  FontSize="33" FontStyle="Normal" FontWeight="Regular" Foreground="#706262"/>
+        <ComboBox Grid.Column="4" x:Name="cmbx" VerticalAlignment="Center" Height="40" SelectionChanged="cmbx_SelectionChanged" >
+            <TextBlock Text="Teachers" FontSize="20" Foreground="#706262" Background="#F9EAEA" x:Name="teachers"/>
+            <TextBlock Text="Childrens" FontSize="20" Foreground="#706262" Background="#F9EAEA" x:Name="childrens"/>
+        </ComboBox>
+        <TextBlock Grid.Column="2" Text="" FontSize="36" Foreground="#706262" x:Name="txt"/>
+        <ListView x:Name="ListTeacher" Visibility="Hidden" Height="1000" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" FontSize="20" Foreground="#706262" Background="#F9EAEA" Grid.RowSpan="3" ItemsSource="{Binding teacher}" MouseDoubleClick="ListTeacher_MouseDoubleClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ФИО" Width="150" DisplayMemberBinding="{Binding Fio}"/>
+                    <GridViewColumn Header="Телефон" Width="100" DisplayMemberBinding="{Binding phone}"/>
+                    <GridViewColumn Header="Дата" Width="100" DisplayMemberBinding="{Binding date}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="ListChild" Visibility="Hidden" Height="1000" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" FontSize="20" Foreground="#706262" Background="#F9EAEA" Grid.RowSpan="3" ItemsSource="{Binding child}" MouseDoubleClick="ListChild_MouseDoubleClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ФИО" Width="150" DisplayMemberBinding="{Binding fio}"/>
+                    <GridViewColumn Header="Возраст" Width="100" DisplayMemberBinding="{Binding age}"/>
+                    <GridViewColumn Header="Номер школы" Width="100" DisplayMemberBinding="{Binding schoolNumber}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="btnaddchild" Visibility="Hidden" Content="Add" Grid.Column="4" Grid.Row="3" HorizontalAlignment="Center" FontSize="36" Foreground="#706262" Background="#F9EAEA" VerticalAlignment="Center" Click="btnaddchild_Click"/>
+        <Button x:Name="btnaddteacher" Visibility="Hidden" Content="Add" Grid.Column="4" Grid.Row="3" HorizontalAlignment="Center" FontSize="36" Foreground="#706262" Background="#F9EAEA" VerticalAlignment="Center" Click="btnaddteacher_Click"/>
+        <Button x:Name="btndeletechild" Visibility="Hidden" Content="Delete" Grid.Row="3" HorizontalAlignment="Center" FontSize="36" Foreground="#706262" Background="#F9EAEA" VerticalAlignment="Center" Click="btndeletechild_Click"/>
+        <Button x:Name="btndeleteteacher" Visibility="Hidden" Content="Delete" Grid.Row="3" HorizontalAlignment="Center" FontSize="36" Foreground="#706262" Background="#F9EAEA" VerticalAlignment="Center" Click="btndeleteteacher_Click"/>
     </Grid>
 </Page>
