@@ -28,7 +28,7 @@
             <Button x:Name="btnSign" Content="Go to Sign up"  FontSize="36" Margin="10" Foreground="#706262" Background="#F9EAEA" Click="btnSign_click"/>
         </StackPanel>
         
-        <TextBox x:Name="login" Grid.Row="1" Grid.Column="1" FontSize="36" Foreground="#706262" Background="#F9EAEA" Margin="20"/>
-        <TextBox x:Name="password" Grid.Row="2" Grid.Column="1" FontSize="36" Foreground="#706262" Background="#F9EAEA" Margin="20"/>
+        <TextBox x:Name="login" Grid.Row="1" Grid.Column="1" FontSize="20" Foreground="#706262" Background="#F9EAEA" Margin="20"/>
+        <TextBox x:Name="password" Grid.Row="2" Grid.Column="1" FontSize="20" Foreground="#706262" Background="#F9EAEA" Margin="20"/>
     </Grid>
 </Page>
